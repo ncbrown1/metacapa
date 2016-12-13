@@ -38,6 +38,8 @@ gem 'omniauth'
 gem 'omniauth-github'
 # Use Octokit to do operations on GitHub objects for authed users
 gem "octokit", "~> 4.0"
+# Use HTTP Caching for GitHub requests to boost performance and minimize API usage
+gem 'faraday-http-cache'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -249,6 +249,12 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :github, ENV['GITHUB_CLIENT_ID'], ENV['GITHUB_CLIENT_SECRET'], scope: 'user,repo,admin:org'
+  stack = Faraday::RackBuilder.new do |builder|
+    builder.use Faraday::HttpCache, serializer: Marshal, shared_cache: false
+    builder.use Octokit::Response::RaiseError
+    builder.adapter Faraday.default_adapter
+  end
+  Octokit.middleware = stack
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
