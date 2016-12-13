@@ -36,6 +36,8 @@ gem 'devise'
 gem 'omniauth'
 # Use GitHub as an OAuth authentication source
 gem 'omniauth-github'
+# Use Octokit to do operations on GitHub objects for authed users
+gem "octokit", "~> 4.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
